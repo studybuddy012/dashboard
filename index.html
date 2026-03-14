@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Device Control Login</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+padding:20px;
+}
+
+.login-box{
+background:white;
+padding:40px 35px;
+width:100%;
+max-width:380px;
+border-radius:14px;
+box-shadow:0 15px 40px rgba(0,0,0,0.35);
+text-align:center;
+}
+
+.logo{
+width:60px;
+height:60px;
+margin:auto;
+border-radius:50%;
+background:#007bff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+color:white;
+margin-bottom:15px;
+}
+
+.title{
+font-size:22px;
+font-weight:600;
+margin-bottom:5px;
+}
+
+.subtitle{
+font-size:13px;
+color:#777;
+margin-bottom:25px;
+}
+.google-btn{
+width:100%;
+margin-top:10px;
+padding:12px;
+border:none;
+border-radius:8px;
+background:white;
+border:1px solid #ccc;
+cursor:pointer;
+font-size:14px;
+}
+
+.google-btn:hover{
+background:#f5f5f5;
+}
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+outline:none;
+font-size:14px;
+box-sizing:border-box;
+}
+
+input:focus{
+border-color:#007bff;
+}
+
+.btn-group{
+margin-top:18px;
+display:flex;
+gap:10px;
+}
+
+button{
+flex:1;
+padding:12px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:14px;
+}
+
+.login-btn{
+background:#007bff;
+color:white;
+}
+
+.login-btn:hover{
+background:#0056b3;
+}
+
+.signup-btn{
+background:#28a745;
+color:white;
+}
+
+.signup-btn:hover{
+background:#1e7e34;
+}
+
+.loader{
+width:25px;
+height:25px;
+border:3px solid #eee;
+border-top:3px solid #007bff;
+border-radius:50%;
+margin:15px auto;
+display:none;
+animation:spin 0.8s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+.error{
+color:#ff4d4d;
+font-size:13px;
+margin-top:10px;
+min-height:18px;
+}
+
+.footer{
+margin-top:20px;
+font-size:12px;
+color:#888;
+}
+
+@media (max-width:480px){
+
+.login-box{
+padding:30px 22px;
+}
+
+.btn-group{
+flex-direction:column;
+}
+
+}
+.login-box{
+background:white;
+padding:40px;
+width:100%;
+max-width:380px;
+border-radius:14px;
+box-shadow:0 20px 45px rgba(0,0,0,0.25);
+text-align:center;
+}
+
+.subtitle{
+color:#666;
+font-size:14px;
+margin-bottom:25px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:14px;
+transition:0.2s;
+}
+
+input:focus{
+border-color:#007bff;
+box-shadow:0 0 0 2px rgba(0,123,255,0.15);
+outline:none;
+}
+
+.btn-group{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+button{
+flex:1;
+padding:12px;
+border:none;
+border-radius:8px;
+font-size:14px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.login-btn{
+background:#007bff;
+color:white;
+}
+
+.login-btn:hover{
+background:#0056b3;
+}
+
+.signup-btn{
+background:#28a745;
+color:white;
+}
+
+.signup-btn:hover{
+background:#1e7e34;
+}
+
+.divider{
+display:flex;
+align-items:center;
+margin:20px 0;
+color:#888;
+font-size:13px;
+}
+
+.divider::before,
+.divider::after{
+content:"";
+flex:1;
+height:1px;
+background:#ddd;
+}
+
+.divider span{
+margin:0 10px;
+}
+
+.google-btn{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #ddd;
+background:white;
+font-size:14px;
+}
+
+.google-btn img{
+width:18px;
+}
+
+.google-btn:hover{
+background:#f5f5f5;
+}
+
+.footer{
+margin-top:18px;
+font-size:12px;
+color:#888;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-box">
+
+<div class="logo">⚡</div>
+
+<h2>Device Control</h2>
+<p class="subtitle">Secure remote device management</p>
+
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+
+<div class="btn-group">
+<button class="login-btn" onclick="login()">Login</button>
+<button class="signup-btn" onclick="signup()">Signup</button>
+</div>
+
+<div class="divider">
+<span>OR</span>
+</div>
+
+<button class="google-btn" onclick="googleLogin()">
+<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg">
+Continue with Google
+</button>
+
+<div id="loader" class="loader"></div>
+
+<div id="error" class="error"></div>
+
+<p class="footer">v1.0 • Secure Firebase Auth</p>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+GoogleAuthProvider,
+signInWithPopup
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+getAuth,
+signInWithEmailAndPassword,
+createUserWithEmailAndPassword,
+sendEmailVerification
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyC6c3tPhAsQEE9frAWatyYoU3DvHSisdKM",
+authDomain: "device-control-platform-8335d.firebaseapp.com",
+projectId: "device-control-platform-8335d",
+storageBucket: "device-control-platform-8335d.firebasestorage.app",
+messagingSenderId: "978497230352",
+appId: "1:978497230352:web:2d40fe35fdcef0bdfc5c95"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+/* LOGIN */
+
+window.login = function(){
+
+const email=document.getElementById("email").value;
+const password=document.getElementById("password").value;
+
+const loader=document.getElementById("loader");
+const errorBox=document.getElementById("error");
+
+errorBox.innerText="";
+
+if(!email || !password){
+errorBox.innerText="Please enter email and password";
+return;
+}
+
+loader.style.display="block";
+
+signInWithEmailAndPassword(auth,email,password)
+
+.then((userCredential)=>{
+
+const user=userCredential.user;
+
+if(user.emailVerified){
+
+window.location="dashboard.html";
+
+}else{
+
+loader.style.display="none";
+errorBox.innerText="Please verify your email before login";
+
+}
+
+})
+
+.catch(()=>{
+loader.style.display="none";
+errorBox.innerText="Login failed";
+});
+
+}
+
+/* SIGNUP */
+
+window.signup=function(){
+
+const email=document.getElementById("email").value;
+const password=document.getElementById("password").value;
+
+const loader=document.getElementById("loader");
+const errorBox=document.getElementById("error");
+
+errorBox.style.color="red";
+errorBox.innerText="";
+
+if(!email || !password){
+errorBox.innerText="Please enter email and password";
+return;
+}
+
+if(password.length<6){
+errorBox.innerText="Password must be at least 6 characters";
+return;
+}
+
+loader.style.display="block";
+
+createUserWithEmailAndPassword(auth,email,password)
+
+.then((userCredential)=>{
+
+const user=userCredential.user;
+
+sendEmailVerification(user).then(()=>{
+
+loader.style.display="none";
+errorBox.style.color="green";
+errorBox.innerText="Verification email sent. Check your inbox.";
+
+});
+
+})
+
+.catch(()=>{
+loader.style.display="none";
+errorBox.innerText="Signup failed";
+});
+
+}
+window.googleLogin = function(){
+
+const provider = new GoogleAuthProvider();
+
+signInWithPopup(auth, provider)
+
+.then((result)=>{
+
+window.location="dashboard.html";
+
+})
+
+.catch((error)=>{
+
+document.getElementById("error").innerText="Google login failed";
+
+});
+
+}
+
+</script>
+
+</body>
+
+</html>

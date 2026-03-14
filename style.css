@@ -1,0 +1,453 @@
+body{
+font-family:Arial, sans-serif;
+margin:0;
+background:#f3f4f6;
+}
+
+/* HEADER */
+
+.topbar{
+background:#1f2937;
+color:white;
+padding:15px 20px;
+}
+
+.topbar-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.topbar h1{
+margin:0;
+font-size:22px;
+}
+
+/* PROFILE */
+
+.profile{
+position:relative;
+}
+
+/* AVATAR */
+
+.avatar{
+width:36px;
+height:36px;
+border-radius:50%;
+object-fit:cover;
+cursor:pointer;
+border:2px solid #374151;
+}
+
+/* DROPDOWN MENU */
+
+.profile-menu{
+position:absolute;
+top:45px;
+right:0;
+background:white;
+color:black;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+padding:12px;
+display:flex;
+flex-direction:column;
+gap:10px;
+min-width:380px;
+
+opacity:0;
+transform:translateY(-10px) scale(0.95);
+pointer-events:none;
+
+transition:all 0.25s ease;
+}
+
+.profile-menu.active{
+opacity:1;
+transform:translateY(0) scale(1);
+pointer-events:auto;
+}
+
+/* UID BOX */
+
+.uid-box{
+font-size:12px;
+background:#f3f4f6;
+padding:6px;
+border-radius:6px;
+word-break:break-all;
+}
+
+/* LOGOUT */
+
+.logout-btn{
+background:#ef4444;
+color:white;
+border:none;
+padding:7px;
+border-radius:6px;
+cursor:pointer;
+font-size:13px;
+}
+
+/* CONTAINER */
+
+.container{
+padding:20px;
+}
+
+/* HEADER DEVICES */
+
+.devices-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+/* ADD DEVICE */
+
+.add-device-btn{
+background:#22c55e;
+color:white;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+font-size:13px;
+}
+
+.add-device-btn:hover{
+background:#16a34a;
+}
+
+/* FILTER BAR */
+
+.filter-bar{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+flex-wrap:wrap;
+}
+
+.filter-btn{
+padding:6px 12px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+background:#e5e7eb;
+font-size:13px;
+}
+
+.filter-btn.active{
+background:#2563eb;
+color:white;
+}
+
+/* GRID */
+
+.devices-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:15px;
+}
+
+/* DEVICE CARD */
+
+.device-card{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+transition:0.25s;
+}
+
+.device-card:hover{
+/* transform:translateY(-3px); */
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* DEVICE NAME */
+
+.device-name{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:16px;
+font-weight:600;
+}
+
+.device-icons{
+display:flex;
+gap:10px;
+}
+
+/* ICONS */
+
+.rename-icon{
+cursor:pointer;
+color:#6b7280;
+transition:0.2s;
+}
+
+.rename-icon:hover{
+color:#2563eb;
+transform:scale(1.2);
+}
+
+.delete-icon{
+cursor:pointer;
+color:#9ca3af;
+transition:0.2s;
+}
+
+.delete-icon:hover{
+color:#ef4444;
+transform:scale(1.2);
+}
+
+/* COMMAND INPUT */
+
+.custom-command{
+display:flex;
+gap:8px;
+margin-top:12px;
+}
+
+.command-input{
+flex:1;
+padding:8px 10px;
+border-radius:6px;
+border:1px solid #d1d5db;
+font-size:14px;
+}
+
+.send-command{
+background:#2563eb;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* ACTION BUTTONS */
+
+.device-actions{
+margin-top:10px;
+display:flex;
+gap:8px;
+}
+
+.device-actions button{
+flex:1;
+border:none;
+padding:8px;
+border-radius:6px;
+cursor:pointer;
+color:white;
+font-size:13px;
+}
+
+.shutdown{
+background:#ef4444;
+}
+
+.restart{
+background:#f59e0b;
+}
+
+.lock{
+background:#3b82f6;
+}
+
+/* LOGS */
+
+.logs-section{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+max-width:900px;
+margin:auto;
+}
+
+.command-logs{
+margin-top:15px;
+max-height:400px;
+overflow:auto;
+}
+
+/* LOG ITEM */
+
+.log-item{
+background:#f3f4f6;
+padding:10px;
+border-radius:8px;
+margin-bottom:8px;
+font-size:14px;
+}
+
+/* MODAL */
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.45);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+/* MODAL BOX */
+
+.modal-content{
+background:white;
+padding:25px;
+border-radius:12px;
+width:100%;
+max-width:360px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
+animation:modalPop 0.25s ease;
+}
+
+/* INPUT */
+
+.modal-content input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
+}
+
+/* BUTTON GROUP */
+
+.modal-buttons{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.modal-buttons button{
+flex:1;
+padding:8px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
+#renameSave{
+background:#2563eb;
+color:white;
+}
+
+#renameCancel{
+background:#9ca3af;
+color:white;
+}
+
+#deleteConfirm{
+background:#ef4444;
+color:white;
+}
+
+#deleteCancel{
+background:#9ca3af;
+color:white;
+}
+
+/* SPINNER */
+
+.connecting{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+margin-top:10px;
+}
+
+.spinner{
+width:20px;
+height:20px;
+border:3px solid #ddd;
+border-top:3px solid #2563eb;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+/* ANIMATIONS */
+
+@keyframes spin{
+
+0%{
+transform:rotate(0);
+}
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+@keyframes modalPop{
+
+from{
+transform:scale(0.9);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* MOBILE */
+
+@media (max-width:600px){
+
+.devices-grid{
+grid-template-columns:1fr;
+}
+
+.topbar-row{
+flex-direction:row;
+}
+
+.filter-bar{
+justify-content:center;
+}
+.profile-menu{
+    min-width: 180px;
+}
+}
+.logs-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+}
+
+.clear-logs-btn{
+background:#ef4444;
+color:white;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+font-size:12px;
+}
+
+.clear-logs-btn:hover{
+background:#dc2626;
+}

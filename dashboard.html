@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Device Control Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="topbar">
+
+<div class="topbar-row">
+
+<h1>Device Control</h1>
+
+<div class="profile">
+
+<img id="userAvatar" class="avatar">
+
+<div id="profileMenu" class="profile-menu">
+
+<div class="uid-box">
+UID: <span id="uid"></span>
+</div>
+
+<button id="logoutBtn" class="logout-btn">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+<div class="devices-header">
+
+<h2>Your Devices (<span id="deviceCount">0</span>)</h2>
+
+<button id="addDeviceBtn" class="add-device-btn">
+Add Device
+</button>
+
+</div>
+
+
+<!-- FILTERS -->
+
+<div class="filter-bar">
+
+<button class="filter-btn active" data-filter="all">All</button>
+
+<button class="filter-btn" data-filter="pc">
+PC
+</button>
+
+<button class="filter-btn" data-filter="android">
+Android
+</button>
+
+<button class="filter-btn" data-filter="logs">
+<i class="fa-solid fa-list"></i> Logs
+</button>
+
+</div>
+
+
+
+<!-- MAIN SECTION -->
+
+<div class="main-section">
+
+
+<!-- DEVICES -->
+
+<div id="devicesSection">
+
+<div id="devices" class="devices-grid"></div>
+
+</div>
+
+
+
+<!-- LOGS -->
+
+<div id="logsSection" class="logs-section" style="display:none">
+
+<div class="logs-header">
+
+<h2>Recent Commands</h2>
+
+<button id="clearLogsBtn" class="clear-logs-btn">
+Clear Logs
+</button>
+
+</div>
+
+<div id="commandLogs" class="command-logs">
+<p>No commands yet</p>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+
+<!-- LINK DEVICE MODAL -->
+
+<div id="linkCodeBox" class="modal" style="display:none">
+
+<div class="modal-content">
+
+<h2>Link Device</h2>
+
+<h1 id="linkCode"></h1>
+
+<div class="connecting">
+
+<div class="spinner"></div>
+
+<span>Waiting for device to connect...</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- RENAME MODAL -->
+
+<div id="renameModal" class="modal" style="display:none">
+
+<div class="modal-content">
+
+<h2>Rename Device</h2>
+
+<input id="renameInput" placeholder="Enter device name">
+
+<div class="modal-buttons">
+
+<button id="renameSave">Save</button>
+
+<button id="renameCancel">Cancel</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- DELETE MODAL -->
+
+<div id="deleteModal" class="modal" style="display:none">
+
+<div class="modal-content">
+
+<h2>Remove Device</h2>
+
+<p>Are you sure you want to remove this device?</p>
+
+<div class="modal-buttons">
+
+<button id="deleteCancel">Cancel</button>
+
+<button id="deleteConfirm">Remove</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- SCRIPT -->
+
+<script type="module" src="dashboard.js"></script>
+
+</body>
+
+</html>
